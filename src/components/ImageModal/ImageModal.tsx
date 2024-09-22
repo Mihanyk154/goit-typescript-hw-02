@@ -1,13 +1,17 @@
-import Modal from "react-modal";
-import css from "./ImageModal.module.css";
-Modal.setAppElement("#root");
+import Modal from 'react-modal';
+import css from './ImageModal.module.css';
+Modal.setAppElement('#root');
+import { FC } from 'react';
+import { ImageModalProps } from '../../types';
 
-export default function ImageModal({ isModalOpen, closeModal, imageInfo }) {
+const ImageModal: FC<ImageModalProps> = ({ isModalOpen, closeModal, imageInfo }) => {
+
+
     return (
         <Modal
             isOpen={isModalOpen}
             onRequestClose={closeModal}
-            contentLabel="Modal window with larger image"
+            contentLabel='Modal window with larger image'
             shouldCloseOnOverlayClick={true}
             shouldCloseOnEsc={true}
             preventScroll={true}
@@ -17,5 +21,7 @@ export default function ImageModal({ isModalOpen, closeModal, imageInfo }) {
         >
             <img src={imageInfo.url} alt={imageInfo.alt} className={css.modalImg} />
         </Modal>
-    );
-}
+    )
+};
+
+export default ImageModal;
